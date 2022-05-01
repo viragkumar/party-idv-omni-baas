@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.5.4</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>party-idv-omni-baas</groupId>
+	<artifactId>api-tests</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>party-idv-omni-baas</name>
+	<description>project for party-idv-omni-baas</description>
+	<properties>
+		<!-- Plugin configuration -->
+		<java.version>11</java.version>
+		<groovy.version>3.0.7</groovy.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+		<cucumber.tags>@e2e</cucumber.tags>
+
+		<!-- Shared dependency versions -->
+		<aws-java-sdk.version>1.11.290</aws-java-sdk.version>
+		<lombok.version>1.18.20</lombok.version>
+		<commons-email.version>1.5</commons-email.version>
+		<courgette.version>5.10.1</courgette.version>
+		<cucumber.version>6.10.3</cucumber.version>
+		<hamcrest.version>2.2</hamcrest.version>
+		<io-rest-assured.version>4.4.0</io-rest-assured.version>
+		<javax-json.version>1.1.4</javax-json.version>
+		<vault.driver.version>5.1.0</vault.driver.version>
+
+		<!-- Sirius deps -->
+		<sirius.test-commons.version>3.1.5</sirius.test-commons.version>
+	</properties>
+	<dependencies>
+		<!-- Spring boot deps -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.retry</groupId>
+			<artifactId>spring-retry</artifactId>
+			<version>1.2.5.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>5.2.8.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+		</dependency>
+
+		<!-- AWS deps -->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-sqs</artifactId>
+			<version>${aws-java-sdk.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.13.1</version>
+		</dependency>
+
+		<!-- vault deps -->
+		<dependency>
+			<groupId>com.bettercloud</groupId>
+			<artifactId>vault-java-driver</artifactId>
+			<version>${vault.driver.version}</version>
+		</dependency>
+
+		<!-- API deps -->
+		<dependency>
+			<groupId>javax.json</groupId>
+			<artifactId>javax.json-api</artifactId>
+			<version>${javax-json.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.json</artifactId>
+			<version>${javax-json.version}</version>
+		</dependency>
+
+		<!-- test framework deps -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+			<version>${hamcrest.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>${io-rest-assured.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>${commons-email.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured-common</artifactId>
+			<version>${io-rest-assured.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>json-path</artifactId>
+			<version>${io-rest-assured.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>xml-path</artifactId>
+			<version>${io-rest-assured.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.github.prashant-ramcharan</groupId>
+			<artifactId>courgette-jvm</artifactId>
+			<version>${courgette.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-spring</artifactId>
+			<version>${cucumber.version}</version>
+		</dependency>
+
+		<!-- Sirius deps -->
+		<dependency>
+			<groupId>sirius.commons</groupId>
+			<artifactId>test-restassured-common</artifactId>
+			<version>${sirius.test-commons.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mailapi</artifactId>
+			<version>1.4.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.lindar</groupId>
+			<artifactId>postcodes-io-client</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>0.12</version>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>6.10.3</version>
+			<scope>test</scope>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<name>sirius--libs-release</name>
+			<url>https://sirius-590455736492.d.codeartifact.eu-west-2.amazonaws.com/maven/libs-release/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>sirius--libs-snapshot</name>
+			<url>https://sirius-590455736492.d.codeartifact.eu-west-2.amazonaws.com/maven/libs-snapshot/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
+</project>
