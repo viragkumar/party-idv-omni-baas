@@ -6,7 +6,7 @@ Feature: Party ID&V OMNI BaaS
     Then status is returned as 01(new)
     And he goes through identity check (L1)
     And GET IdCheck_DocList API gets hit
-    Then the list of 6 documents is returned for user to upload
+    Then the list of documents is returned for user to upload
       | PASSPORT - UK/IRISH (UNEXPIRED) |  | UK PHOTO DRIVING LICENCE(UNEXPIRED) |  | BIOMETRIC RESIDENCE PERMIT (UNEXPIRED) |  | PASSPORT - NON UK/NON-IRISH AND RIGHT TO RMN IN UK |  | EEA OR SWISS NATIONAL IDENTITY CARD (UNEXPIRED) |  | PRKING CRD FOR DISABLED PEOPLE (BLUE BADGE) (UNEX) |
 
 
@@ -16,7 +16,7 @@ Feature: Party ID&V OMNI BaaS
     Then status is returned as 02(in progress) and document used in ID check (L1)
     And he goes through residency check (L2)
     And GET residency_Check_DocList API gets hit
-    Then the list of 4 documents is returned for user to upload
+    Then the list of documents is returned for user to upload
       | UK PHOTO DRIVING LICENCE(UNEXPIRED) |  | BANK STATEMENT - NOT BRANCH PRINTED (<3MTH) |  | Mortgage statement from recognised lender |  | Utility Bill (not mobile phone) |
 
 
@@ -27,7 +27,7 @@ Feature: Party ID&V OMNI BaaS
     And he has used UK Driving Licence for ID check (L1)
     And he goes through residency check (L2)
     And GET residency_Check_DocList API gets hit
-    Then the list of 3 documents is returned for user to upload without UK Driving Licence
+    Then the list of documents is returned for user to upload without UK Driving Licence
       | BANK STATEMENT - NOT BRANCH PRINTED (<3MTH) |  | Mortgage statement from recognised lender |  | Utility Bill (not mobile phone) |
 
 
@@ -48,7 +48,7 @@ Feature: Party ID&V OMNI BaaS
     And he goes through ID check (L1) with "PASSPORT - NON UK/NON-IRISH AND RIGHT TO RMN IN UK"
     And he goes through residency check (L2) with "UK PHOTO DRIVING LICENCE(UNEXPIRED)"
     And GET rightToRemain_DocList API gets hit
-    Then the list of 3 documents is returned for user to upload
+    Then the list of documents is returned for user to upload
       | BIOMETRIC RESIDENCE PERMIT (UNEXPIRED) |  | Visa |  | Settled and Pre-settled status |
 
 
@@ -59,7 +59,7 @@ Feature: Party ID&V OMNI BaaS
     And he goes through ID check (L1) with "PASSPORT - NON UK/NON-IRISH AND RIGHT TO RMN IN UK"
     And he goes through residency check (L2) with "BANK STATEMENT - NOT BRANCH PRINTED (<3MTH)"
     And GET rightToRemain_DocList API gets hit
-    Then the list of 3 documents is returned for user to upload
+    Then the list of documents is returned for user to upload
       | BIOMETRIC RESIDENCE PERMIT (UNEXPIRED) |  | Visa |  | Settled and Pre-settled status |
 
 
@@ -70,7 +70,7 @@ Feature: Party ID&V OMNI BaaS
     And he goes through ID check (L1) with "PASSPORT - NON UK/NON-IRISH AND RIGHT TO RMN IN UK"
     And he goes through residency check (L2) with "Mortgage statement from recognised lender"
     And GET rightToRemain_DocList API gets hit
-    Then the list of 3 documents is returned for user to upload
+    Then the list of documents is returned for user to upload
       | BIOMETRIC RESIDENCE PERMIT (UNEXPIRED) |  | Visa |  | Settled and Pre-settled status |
 
 
@@ -81,7 +81,7 @@ Feature: Party ID&V OMNI BaaS
     And he goes through ID check (L1) with "PASSPORT - NON UK/NON-IRISH AND RIGHT TO RMN IN UK"
     And he goes through residency check (L2) with "Utility Bill (not mobile phone)"
     And GET rightToRemain_DocList API gets hit
-    Then the list of 3 documents is returned for user to upload
+    Then the list of documents is returned for user to upload
       | BIOMETRIC RESIDENCE PERMIT (UNEXPIRED) |  | Visa |  | Settled and Pre-settled status |
 
 
@@ -110,10 +110,10 @@ Feature: Party ID&V OMNI BaaS
     And GET the status of customer
     Then status is returned as 01(new)
     And he goes through ID check (L1) with "PRKING CRD FOR DISABLED PEOPLE (BLUE BADGE) (UNEX)"
-    And he goes through residency check (L2) with done of the document
+    And he goes through residency check (L2) with following documents
       | UK PHOTO DRIVING LICENCE(UNEXPIRED) |  | BANK STATEMENT - NOT BRANCH PRINTED (<3MTH) |  | Mortgage statement from recognised lender |  | Utility Bill (not mobile phone) |
     And GET rightToRemain_DocList API gets hit
-    Then the list of 3 documents is returned for user to upload
+    Then the list of documents is returned for user to upload
       | BIOMETRIC RESIDENCE PERMIT (UNEXPIRED) |  | Visa |  | Settled and Pre-settled status |
 
 
@@ -122,10 +122,10 @@ Feature: Party ID&V OMNI BaaS
     And GET the status of customer
     Then status is returned as 01(new)
     And he goes through ID check (L1) with "PASSPORT - NON UK/NON-IRISH AND RIGHT TO RMN IN UK"
-    And he goes through residency check (L2) with done of the document
+    And he goes through residency check (L2) with following documents
       | UK PHOTO DRIVING LICENCE(UNEXPIRED) |  | BANK STATEMENT - NOT BRANCH PRINTED (<3MTH) |  | Mortgage statement from recognised lender |  | Utility Bill (not mobile phone) |
     And GET rightToRemain_DocList API gets hit
-    Then the list of 3 documents is returned for user to upload
+    Then the list of documents is returned for user to upload
       | BIOMETRIC RESIDENCE PERMIT (UNEXPIRED) |  | Visa |  | Settled and Pre-settled status |
 
 
@@ -134,14 +134,14 @@ Feature: Party ID&V OMNI BaaS
     And GET the status of customer
     Then status is returned as 01(new)
     And he goes through ID check (L1) with "EEA OR SWISS NATIONAL IDENTITY CARD (UNEXPIRED)"
-    And he goes through residency check (L2) with done of the document
+    And he goes through residency check (L2) with following documents
       | UK PHOTO DRIVING LICENCE(UNEXPIRED) |  | BANK STATEMENT - NOT BRANCH PRINTED (<3MTH) |  | Mortgage statement from recognised lender |  | Utility Bill (not mobile phone) |
     And GET rightToRemain_DocList API gets hit
-    Then the list of 3 documents is returned for user to upload
+    Then the list of documents is returned for user to upload
       | BIOMETRIC RESIDENCE PERMIT (UNEXPIRED) |  | Visa |  | Settled and Pre-settled status |
 
 
-  Scenario : Validating the message for customer completed the checks
+  Scenario: Validating the message for customer completed the checks
     Given user is coming second time on PCA
     And GET the status of customer
     And status is returned as 03(Done) and documents used in ID check,residency check,right to remain check

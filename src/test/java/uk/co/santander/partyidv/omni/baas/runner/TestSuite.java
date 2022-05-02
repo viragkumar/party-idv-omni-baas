@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
         reportTargetDir = "target",
         cucumberOptions = @CucumberOptions(
                 features = "src/test/resources/features",
-                glue = "uk.co.santander.partyidv.omni.baas.steps.*",
+                glue = "uk.co.santander.partyidv.omni.baas.stepss",
                 plugin = {
                         "pretty",
                         "json:target/cucumber-report/cucumber.json",
