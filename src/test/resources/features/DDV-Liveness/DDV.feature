@@ -1,5 +1,8 @@
 Feature: DDV and Liveness
 
+  Background:
+    Given generate dynamic profile for a new customer
+
   Scenario: Verifying the identity of a new customer through DDV check with Passport
     Given a customer is already onboarded
     When check_id is ID&V (L5)
