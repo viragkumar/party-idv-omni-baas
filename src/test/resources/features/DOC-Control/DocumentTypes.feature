@@ -1,5 +1,8 @@
 Feature: Party ID&V OMNI BaaS
 
+  Background:
+    Given generate dynamic profile for a new customer
+
   Scenario: Retrieve the document list for the first time onboarding customer for ID check (L1)
     Given user is onboarding first time on PCA
     And GET the status of customer
