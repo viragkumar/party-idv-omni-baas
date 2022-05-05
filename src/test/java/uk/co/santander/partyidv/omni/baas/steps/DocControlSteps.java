@@ -32,8 +32,6 @@ public class DocControlSteps {
 
     @Given("user is onboarding first time on PCA")
     public void userIsOnboardingFirstTimeOnPCA() throws Exception {
-        RequestSpecification rs = RestAssured.given();
-
         String emailAddress = emailServiceClient.generateNewEmailAddress();
 
         // Call API to generate session id

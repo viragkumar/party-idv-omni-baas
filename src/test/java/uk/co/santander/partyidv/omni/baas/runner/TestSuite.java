@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         threads = 1,
         runLevel = CourgetteRunLevel.SCENARIO,
         showTestOutput = true,
-        plugin = "extentreports",
+        plugin = { "pretty", "html:target/cucumber-reports" },
         reportTargetDir = "target",
         cucumberOptions = @CucumberOptions(
                 features = "src/test/resources/features",

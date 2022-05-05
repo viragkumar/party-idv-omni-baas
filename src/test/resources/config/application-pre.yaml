@@ -1,0 +1,19 @@
+logging:
+  level:
+    root: "warn"
+    org.springframework.web: "debug"
+    org.hibernate: "error"
+sirius:
+  api:
+    integrations:
+      api-gateway-url: https://api.pre.sirius.tlzproject.com
+      proxy-enabled: true
+      proxy-username: USERNAME
+      proxy-password: PASSWORD
+    email:
+      provider: dev.sirius.tlzproject.com
+    sqs:
+      queue-url: https://sqs.eu-west-2.amazonaws.com/109421013472/sirius-incoming-email-dev
+      visibilityTimeoutSeconds: 10
+      maxNumberOfMessages: 5
+      waitTimeSeconds: 10
