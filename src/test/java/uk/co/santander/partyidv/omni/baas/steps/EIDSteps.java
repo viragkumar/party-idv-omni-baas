@@ -21,10 +21,6 @@ public class EIDSteps {
     public void check_idIsEIDL(int arg0) {
     }
 
-//    @And("POST EID endpoint with personal info parameters {String}")
-//    public void postEIDEndpointWithPersonalInfoParameters(String title) {
-//    }
-
     @And("address details of customer are sent in request")
     public void addressDetailsOfCustomerAreSentInRequest(DataTable dataTable) {
     }
@@ -33,22 +29,22 @@ public class EIDSteps {
     public void internalInfoValuesAreSentInRequest(DataTable dataTable) {
     }
 
-    @Then("response returned is {string} and customerCompliantByEid as S with fields returned \\/\\/Need more clarification for output")
-    public void responseReturnedIsAndCustomerCompliantByEidAsSWithFieldsReturnedNeedMoreClarificationForOutput(String arg0) {
+    @Then("response returned is {string} and customerCompliantByEid as S with fields returned")
+    public void responseReturnedIsAndCustomerCompliantByEidAsSWithFieldsReturned(String arg0, DataTable dataTable) {
     }
 
-    @And("verify the status response with GET API  \\/\\/Need to get more info \\(Pending)")
-    public void verifyTheStatusResponseWithGETAPINeedToGetMoreInfoPending() {
+    @And("verify the status response with GET API")
+    public void verifyTheStatusResponseWithGETAPI() {
     }
 
-    @Then("response returned is {string} customerCompliantByEid as {string} with fields returned \\/\\/Need more clarification for output")
-    public void responseReturnedIsCustomerCompliantByEidAsWithFieldsReturnedNeedMoreClarificationForOutput(String arg0, String arg1) {
+    @Then("response returned is {string} customerCompliantByEid as {string} with fields returned")
+    public void responseReturnedIsCustomerCompliantByEidAsWithFieldsReturned(String arg0, String arg1, DataTable dataTable) {
     }
 
 
 
-    @Then("response returned is http code {int} Bad request with error message \\/\\/ Pending error message")
-    public void responseReturnedIsHttpCodeBadRequestWithErrorMessagePendingErrorMessage(int arg0) {
+    @Then("response returned is http code 400 Bad request with error message")
+    public void responseReturnedIsHttpCodeBadRequestWithErrorMessagePendingErrorMessage(String errMessage) {
     }
 
     @And("address details of customer are sent in request with parameters <premise>")
@@ -85,5 +81,17 @@ public class EIDSteps {
 
     @Given("Call EID endpoint with token from different user")
     public void callEIDEndpointWithTokenFromDifferentUser() {
+    }
+
+    @When("POST EID endpoint with personal info parameter")
+    public void postEIDEndpointWithPersonalInfoParameter(String param) {
+    }
+
+    @When("POST EID endpoint with personal info parameters")
+    public void postEIDEndpointWithPersonalInfoParametersTitle(String dataTable) {
+    }
+
+    @When("POST EID endpoint with personal info with following parameters")
+    public void postEIDEndpointWithPersonalInfoWithFollowingParameters(DataTable dataTable) {
     }
 }
