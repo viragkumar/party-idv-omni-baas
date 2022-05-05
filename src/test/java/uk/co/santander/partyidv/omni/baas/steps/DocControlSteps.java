@@ -1,21 +1,52 @@
 package uk.co.santander.partyidv.omni.baas.steps;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
+import io.restassured.RestAssured;
+import io.restassured.specification.RequestSpecification;
+import org.springframework.beans.factory.annotation.Autowired;
+import uk.co.santander.partyidv.omni.baas.client.email.EmailService;
 import uk.co.santander.partyidv.omni.baas.config.ApplicationConfig;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.spring.CucumberContextConfiguration;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import uk.co.santander.partyidv.omni.baas.config.IntegrationProperties;
+import uk.co.santander.partyidv.omni.baas.model.Registration.RegistrationRequest;
+import uk.co.santander.partyidv.omni.baas.model.Registration.RegistrationRequestAttribution;
+import uk.co.santander.partyidv.omni.baas.restassured.HttpMethods;
+import uk.co.santander.partyidv.omni.baas.utils.RandomDataGeneratorUtils;
 
 @Slf4j
 @RequiredArgsConstructor
 public class DocControlSteps {
+    @Autowired
+    public EmailService emailServiceClient;
+
+    @Autowired
+    public HttpMethods httpMethods;
+    private final ObjectMapper objectMapper;
 
     @Given("user is onboarding first time on PCA")
-    public void userIsOnboardingFirstTimeOnPCA() {
+    public void userIsOnboardingFirstTimeOnPCA() throws Exception {
+        RequestSpecification rs = RestAssured.given();
+
+        String emailAddress = emailServiceClient.generateNewEmailAddress();
+
+        // Call API to generate session id
+        final RegistrationRequest registrationRequest = RegistrationRequest.builder()
+                .email(emailAddress)
+                .attribution(RegistrationRequestAttribution.builder()
+                        .channelKey("SANUK")
+                        .productKey("PCA")
+                        .build())
+
+                .build();
+
+        httpMethods.post("/v1/auth/users", objectMapper.writeValueAsString(registrationRequest)).then().statusCode(201);
     }
 
     @And("GET the status of customer")
