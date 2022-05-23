@@ -2,13 +2,13 @@ Feature: EID (Electronic Identification)
 
   Background: Generate random data
 
-  Scenario Outline: Verify the error message response if title is wrong from customer service DB
+  Scenario Outline: Verify the error message response if title is sent wrong in POST API
     Given a customer has registered and customer id is created
     And check if customer id exists in ID&V DB
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
-    And GET the personal information from customer service DB where <Title> is wrong
-      |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+    And POST the personal information of customer where <Title> is wrong
+      |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet| |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "Incorrect data"
     Examples:
       |Title|
@@ -19,13 +19,13 @@ Feature: EID (Electronic Identification)
       |abc  |
 
 
-  Scenario Outline: Verify the error message response if First Name is wrong from customer service DB
+  Scenario Outline: Verify the error message response if First Name is sent wrong in POST API
     Given a customer has registered and customer id is created
     And check if customer id exists in ID&V DB
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
-    And GET the personal information from customer service DB where <FirstName> is wrong
-      |Title| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+    And POST the personal information of customer where <FirstName> is wrong
+      |Title| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet| |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "Incorrect data"
     Examples:
       |FirstName|
@@ -37,13 +37,13 @@ Feature: EID (Electronic Identification)
       |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
 
 
-  Scenario Outline: Verify the error message response if Last Name is wrong from customer service DB
+  Scenario Outline: Verify the error message response if Last Name is sent wrong in POST API
     Given a customer has registered and customer id is created
     And check if customer id exists in ID&V DB
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
-    And GET the personal information from customer service DB where <LastName> is wrong
-      |Title| |FirstName| |MiddleName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+    And POST the personal information of customer where <LastName> is wrong
+      |Title| |FirstName| |Birthdate| |PhoneNumber| |premise| |primaryStreet| |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "Incorrect data"
     Examples:
       |LastName|
@@ -55,13 +55,13 @@ Feature: EID (Electronic Identification)
       |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
 
 
-  Scenario Outline: Verify the error message response if Birth Date is wrong from customer service DB
+  Scenario Outline: Verify the error message response if Birth Date is sent wrong in POST API
     Given a customer has registered and customer id is created
     And check if customer id exists in ID&V DB
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
-    And GET the personal information from customer service DB where <BirthDate> is wrong
-      |Title| |FirstName| |MiddleName||LastName| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+    And POST the personal information of customer where <BirthDate> is wrong
+      |Title| |FirstName| |LastName| |PhoneNumber| |premise| |primaryStreet| |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "Incorrect data"
     Examples:
       |BirthDate|
@@ -77,13 +77,13 @@ Feature: EID (Electronic Identification)
 
 
 
-  Scenario Outline: Verify the error message response if Phone Number is wrong from customer service DB
+  Scenario Outline: Verify the error message response if Phone Number is sent wrong in POST API
     Given a customer has registered and customer id is created
     And check if customer id exists in ID&V DB
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
-    And GET the personal information from customer service DB where <PhoneNumber> is wrong
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+    And POST the personal information of customer where <PhoneNumber> is wrong
+      |Title| |FirstName| |LastName| |Birthdate| |premise| |primaryStreet| |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "Incorrect data"
     Examples:
       |PhoneNumber      |
@@ -95,13 +95,13 @@ Feature: EID (Electronic Identification)
       |+44-073213       |
 
 
-  Scenario Outline: Verify the error message response if Premise is wrong from customer service DB
+  Scenario Outline: Verify the error message response if Premise is sent wrong in POST API
     Given a customer has registered and customer id is created
     And check if customer id exists in ID&V DB
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
-    And GET the personal information from customer service DB where <Premise> is wrong
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+    And POST the personal information of customer where <Premise> is wrong
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |primaryStreet| |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "Incorrect data"
     Examples:
       |Premise|
@@ -111,13 +111,13 @@ Feature: EID (Electronic Identification)
       |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
 
 
-  Scenario Outline: Verify the error message response if Primary Street is wrong from customer service DB
+  Scenario Outline: Verify the error message response if Primary Street is sent wrong in POST API
     Given a customer has registered and customer id is created
     And check if customer id exists in ID&V DB
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
-    And GET the personal information from customer service DB where <PrimaryStreet> is wrong
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+    And POST the personal information of customer where <PrimaryStreet> is wrong
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "Incorrect data"
     Examples:
       |PrimaryStreet|
@@ -128,13 +128,13 @@ Feature: EID (Electronic Identification)
       |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
 
 
-  Scenario Outline: Verify the error message response if Town is wrong from customer service DB
+  Scenario Outline: Verify the error message response if Town is sent wrong in POST API
     Given a customer has registered and customer id is created
     And check if customer id exists in ID&V DB
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
-    And GET the personal information from customer service DB where <Town> is wrong
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+    And POST the personal information of customer where <Town> is wrong
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "Incorrect data"
     Examples:
       |Town      |
@@ -146,13 +146,13 @@ Feature: EID (Electronic Identification)
       |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
 
 
-  Scenario Outline: Verify the error message response if Post Code is wrong from customer service DB
+  Scenario Outline: Verify the error message response if Post Code is sent wrong in POST API
     Given a customer has registered and customer id is created
     And check if customer id exists in ID&V DB
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
-    And GET the personal information from customer service DB where <PostCode> is wrong
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+    And POST the personal information of customer where <PostCode> is wrong
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet| |town| |AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "Incorrect data"
     Examples:
       |postCode|
@@ -162,13 +162,13 @@ Feature: EID (Electronic Identification)
       |1234567|
 
 
-  Scenario Outline: Verify the error message response if Risk level is wrong from customer service DB
+  Scenario Outline: Verify the error message response if Risk level is sent wrong in POST API
     Given a customer has registered and customer id is created
     And check if customer id exists in ID&V DB
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
-    And GET the personal information from customer service DB where <RiskLevel> is wrong
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |customerId| |interventionType||productType| |productSubtype| |advisor|
+    And POST the personal information of customer where <RiskLevel> is wrong
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet| |town| |postCode| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "Incorrect data"
     Examples:
       |RiskLevel|
@@ -180,13 +180,13 @@ Feature: EID (Electronic Identification)
       |01  |
 
 
-  Scenario Outline: Verify the error message response if Product type is wrong from customer service DB
+  Scenario Outline: Verify the error message response if Product type is sent wrong in POST API
     Given a customer has registered and customer id is created
     And check if customer id exists in ID&V DB
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
-    And GET the personal information from customer service DB where <productType> is wrong
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |AMLRiskLevel (02-Standard)| |customerId| |interventionType| |productSubtype| |advisor|
+    And POST the personal information of customer where <productType> is wrong
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet| |town| |postCode||AMLRiskLevel (02-Standard)| |productSubtype|
     Then response returned is http code 400 Bad request with error message "Incorrect data"
     Examples:
       |productType|
@@ -197,13 +197,13 @@ Feature: EID (Electronic Identification)
       |0000|
 
 
-  Scenario Outline: Verify the error message response if Product Subtype is wrong from customer service DB
+  Scenario Outline: Verify the error message response if Product Subtype is sent wrong in POST API
     Given a customer has registered and customer id is created
     And check if customer id exists in ID&V DB
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
-    And GET the personal information from customer service DB where <productSubtype> is wrong
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |AMLRiskLevel (02-Standard)| |customerId| |interventionType| |advisor|
+    And POST the personal information of customer where <productSubtype> is wrong
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet| |town| |postCode||AMLRiskLevel (02-Standard)| |productType|
     Then response returned is http code 400 Bad request with error message "Incorrect data"
     Examples:
       |productSubtype|
@@ -218,16 +218,16 @@ Feature: EID (Electronic Identification)
     And check if customer id exists in ID&V DB
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
-    And GET the personal information from customer service DB with BirthDate as "23-12-1980"
-      |Title| |FirstName| |MiddleName||LastName| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+    And POST the personal information of customer with BirthDate as "23-12-1980"
+      |Title| |FirstName| |LastName| |PhoneNumber| |premise| |primaryStreet|  |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     And validate the response of personal information
     And transform the BirthDate in EID compatible format as "1980-12-23"
     And POST EID endpoint with personal info parameters
-      |Title| |FirstName| |MiddleName||LastName| |PhoneNumber|
+      |Title| |FirstName| |LastName| |PhoneNumber|
     And address details of customer are sent in request
-      |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode|
+      |premise| |primaryStreet| |town| |postCode|
     And internal info values are sent in request
-      |AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     And response returned is "Approved" and customerCompliantByEid as S with fields returned
       |customerCompliantByEid| |eIdDocumentList| |eIdDocumentType| |eIdUniqueId|
     And verify the check status is updated in ID&V
@@ -239,16 +239,16 @@ Feature: EID (Electronic Identification)
     And check if customer id exists in ID&V DB
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
-    And GET the personal information from customer service DB with PostCode as "MK52JH"
-      |Title| |FirstName| |MiddleName||LastName| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+    And POST the personal information of customer with PostCode as "MK52JH"
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet|  |town| |AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     And validate the response of personal information
     And transform the PostCode in EID compatible format as "MK5 2JH"
     And POST EID endpoint with personal info parameters
-      |Title| |FirstName| |MiddleName||LastName| |PhoneNumber|
+      |Title| |FirstName| |LastName| |PhoneNumber|
     And address details of customer are sent in request
-      |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode|
+      |premise| |primaryStreet| |secondaryStreet| |town| |postCode|
     And internal info values are sent in request
-      |AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     And response returned is "Approved" and customerCompliantByEid as S with fields returned
       |customerCompliantByEid| |eIdDocumentList| |eIdDocumentType| |eIdUniqueId|
     And verify the check status is updated in ID&V
@@ -261,15 +261,15 @@ Feature: EID (Electronic Identification)
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
     And GET the personal information from customer service DB
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet|  |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     And validate the response of personal information
     And transform the data in EID compatible format
     And POST EID endpoint with personal info parameters with wrong <Title>
-      |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber|
+      |FirstName| |LastName| |Birthdate| |PhoneNumber|
     And address details of customer are sent in request
-      |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode|
+      |premise| |primaryStreet| |town| |postCode|
     And internal info values are sent in request
-      |AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "invalid Title"
     Examples:
       |Title|
@@ -286,15 +286,15 @@ Feature: EID (Electronic Identification)
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
     And GET the personal information from customer service DB
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet|  |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     And validate the response of personal information
     And transform the data in EID compatible format
     And POST EID endpoint with personal info parameters with wrong <FirstName>
-      |Title| |MiddleName||LastName| |Birthdate| |PhoneNumber|
+      |Title| |LastName| |Birthdate| |PhoneNumber|
     And address details of customer are sent in request
-      |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode|
+      |premise| |primaryStreet| |town| |postCode|
     And internal info values are sent in request
-      |AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "invalid First Name"
     Examples:
       |FirstName|
@@ -312,15 +312,15 @@ Feature: EID (Electronic Identification)
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
     And GET the personal information from customer service DB
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet|  |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     And validate the response of personal information
     And transform the data in EID compatible format
     And POST EID endpoint with personal info parameters with wrong <LastName>
-      |Title| |FirstName| |MiddleName| |Birthdate| |PhoneNumber|
+      |Title| |FirstName| |Birthdate| |PhoneNumber|
     And address details of customer are sent in request
-      |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode|
+      |premise| |primaryStreet| |town| |postCode|
     And internal info values are sent in request
-      |AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "invalid Last Name"
     Examples:
       |LastName|
@@ -338,16 +338,16 @@ Feature: EID (Electronic Identification)
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
     And GET the personal information from customer service DB
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet|  |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     And validate the response of personal information
     And transform the data in EID compatible format
     And POST EID endpoint with personal info parameters with wrong <BirthDate>
-      |Title| |FirstName| |MiddleName| |LastName| |PhoneNumber|
+      |Title| |FirstName|  |LastName| |PhoneNumber|
     And POST EID endpoint with personal info parameters <BirthDate>
     And address details of customer are sent in request
-      |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode|
+      |premise| |primaryStreet| |town| |postCode|
     And internal info values are sent in request
-      |AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "invalid Birth Date"
     Examples:
       |Birthdate|
@@ -367,15 +367,15 @@ Feature: EID (Electronic Identification)
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
     And GET the personal information from customer service DB
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet|  |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     And validate the response of personal information
     And transform the data in EID compatible format
     And POST EID endpoint with personal info parameters with wrong <PhoneNumber>
-      |Title| |FirstName| |MiddleName| |Birthdate|
+      |Title| |FirstName|  |Birthdate|
     And address details of customer are sent in request
-      |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode|
+      |premise| |primaryStreet| |town| |postCode|
     And internal info values are sent in request
-      |AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "invalid Phone Number"
     Examples:
       |PhoneNumber      |
@@ -393,15 +393,15 @@ Feature: EID (Electronic Identification)
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
     And GET the personal information from customer service DB
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet|  |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     And validate the response of personal information
     And transform the data in EID compatible format
     And POST EID endpoint with personal info parameters
-      |Title| |FirstName| |MiddleName| |Birthdate| |PhoneNumber|
-    And address details of customer are sent in request with wrong <Premise> to EID
-      |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode|
+      |Title| |FirstName|  |Birthdate| |PhoneNumber|
+    And address details of customer are sent in request
+      |primaryStreet| |town| |postCode|
     And internal info values are sent in request
-      |AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "invalid Premise"
     Examples:
       |Premise|
@@ -417,15 +417,15 @@ Feature: EID (Electronic Identification)
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
     And GET the personal information from customer service DB
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet|  |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     And validate the response of personal information
     And transform the data in EID compatible format
     And POST EID endpoint with personal info parameters
-      |Title| |FirstName| |MiddleName| |Birthdate| |PhoneNumber|
-    And address details of customer are sent in request with wrong <primaryStreet> to EID
-      |premise| |alternativePremise| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode|
+      |Title| |FirstName|  |Birthdate| |PhoneNumber|
+    And address details of customer are sent in request
+      |premise| |town| |postCode|
     And internal info values are sent in request
-      |AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "invalid Primary Street"
     Examples:
       |primaryStreet|
@@ -442,15 +442,15 @@ Feature: EID (Electronic Identification)
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
     And GET the personal information from customer service DB
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet|  |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     And validate the response of personal information
     And transform the data in EID compatible format
     And POST EID endpoint with personal info parameters
-      |Title| |FirstName| |MiddleName| |Birthdate| |PhoneNumber|
-    And address details of customer are sent in request with wrong <town> to EID
-      |premise| |alternativePremise| |primaryDistrict| |primaryStreet| |secondaryStreet| |secondaryDistrict| |postCode|
+      |Title| |FirstName|  |Birthdate| |PhoneNumber|
+    And address details of customer are sent in request
+      |premise| |primaryStreet| |postCode|
     And internal info values are sent in request
-      |AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "invalid Town"
     Examples:
       |town      |
@@ -468,15 +468,15 @@ Feature: EID (Electronic Identification)
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
     And GET the personal information from customer service DB
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet|  |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     And validate the response of personal information
     And transform the data in EID compatible format
     And POST EID endpoint with personal info parameters
-      |Title| |FirstName| |MiddleName| |Birthdate| |PhoneNumber|
-    And address details of customer are sent in request with wrong <postCode> to EID
-      |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town|
+      |Title| |FirstName|  |Birthdate| |PhoneNumber|
+    And address details of customer are sent in request
+      |premise| |primaryStreet| |town|
     And internal info values are sent in request
-      |AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "invalid PostCode"
     Examples:
       |postCode|
@@ -493,15 +493,15 @@ Feature: EID (Electronic Identification)
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
     And GET the personal information from customer service DB
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet|  |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     And validate the response of personal information
     And transform the data in EID compatible format
     And POST EID endpoint with personal info parameters
-      |Title| |FirstName| |MiddleName| |Birthdate| |PhoneNumber|
-    And address details of customer are sent in request with parameters
-      |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode|
-    And internal info values are sent in request with wrong <riskLevel>
-      |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |Title| |FirstName|  |Birthdate| |PhoneNumber|
+    And address details of customer are sent in request
+      |premise| |primaryStreet| |town| |postCode|
+    And internal info values are sent in request
+      |productType| |productSubtype|
     Then response returned is http code 400 Bad request with error message "invalid Risk Level"
     Examples:
       |riskLevel|
@@ -519,15 +519,15 @@ Feature: EID (Electronic Identification)
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
     And GET the personal information from customer service DB
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet|  |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     And validate the response of personal information
     And transform the data in EID compatible format
     And POST EID endpoint with personal info parameters
-      |Title| |FirstName| |MiddleName| |Birthdate| |PhoneNumber|
-    And address details of customer are sent in request with parameters
-      |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode|
-    And internal info values are sent in request with wrong <productType>
-      |customerId| |interventionType| |productSubtype| |advisor|
+      |Title| |FirstName|  |Birthdate| |PhoneNumber|
+    And address details of customer are sent in request
+      |premise| |primaryStreet| |town| |postCode|
+    And internal info values are sent in request
+      |AMLRiskLevel (02-Standard)| |productSubtype|
     Then response returned is http code 400 Bad request with error message "invalid Product Type"
     Examples:
       |productType|
@@ -545,15 +545,15 @@ Feature: EID (Electronic Identification)
     And check the status of customer is "NOT_VERIFIED"
     When check_id is L4 (EID)
     And GET the personal information from customer service DB
-      |Title| |FirstName| |MiddleName||LastName| |Birthdate| |PhoneNumber| |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode||AMLRiskLevel (02-Standard)| |customerId| |interventionType||productType| |productSubtype| |advisor|
+      |Title| |FirstName| |LastName| |Birthdate| |PhoneNumber| |premise| |primaryStreet|  |town| |postCode||AMLRiskLevel (02-Standard)| |productType| |productSubtype|
     And validate the response of personal information
     And transform the data in EID compatible format
     And POST EID endpoint with personal info parameters
-      |Title| |FirstName| |MiddleName| |Birthdate| |PhoneNumber|
-    And address details of customer are sent in request with parameters
-      |premise| |alternativePremise| |primaryStreet| |primaryDistrict| |secondaryStreet| |secondaryDistrict| |town| |postCode|
-    And internal info values are sent in request with wrong <productSubtype>
-      |customerId| |interventionType| |productSubtype| |advisor|
+      |Title| |FirstName|  |Birthdate| |PhoneNumber|
+    And address details of customer are sent in request
+      |premise| |primaryStreet| |town| |postCode|
+    And internal info values are sent in request
+      |AMLRiskLevel (02-Standard)| |productType|
     Then response returned is http code 400 Bad request with error message "invalid Product SubType"
     Examples:
       |productSubtype|
@@ -595,6 +595,5 @@ Feature: EID (Electronic Identification)
   Scenario: Call EID endpoint with different user token
     Given Call EID endpoint with token from different user
     Then 403 http code is returned with message "Forbidden"
-
 
 

@@ -1,5 +1,6 @@
 package uk.co.santander.partyidv.omni.baas.steps;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
@@ -7,7 +8,9 @@ import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
+import uk.co.santander.partyidv.omni.baas.client.documentcontrol.IdentityVerificationService;
 import uk.co.santander.partyidv.omni.baas.client.email.EmailService;
+import uk.co.santander.partyidv.omni.baas.client.jwt.TokenService;
 import uk.co.santander.partyidv.omni.baas.config.ApplicationConfig;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -27,11 +30,25 @@ public class DocControlSteps {
     public EmailService emailServiceClient;
 
     @Autowired
+    public TokenService tokenServiceClient;
+
+    @Autowired
+    public IdentityVerificationService identityVerificationService;
+
+
+    @Autowired
     public HttpMethods httpMethods;
     private final ObjectMapper objectMapper;
 
     @Given("user is onboarding first time on PCA")
     public void userIsOnboardingFirstTimeOnPCA() throws Exception {
+        String token = tokenServiceClient.generateToken();
+
+        identityVerificationService.getIdentityByCustomer(token, "64ab2459-420d-466e-bad9-2943c819c48c");
+    }
+
+    @And("GET the status of customer")
+    public void getTheStatusOfCustomer() throws Exception {
         String emailAddress = emailServiceClient.generateNewEmailAddress();
 
         // Call API to generate session id
@@ -44,11 +61,7 @@ public class DocControlSteps {
 
                 .build();
 
-        httpMethods.post("/v1/auth/users", objectMapper.writeValueAsString(registrationRequest)).then().statusCode(201);
-    }
-
-    @And("GET the status of customer")
-    public void getTheStatusOfCustomer() {
+        httpMethods.post("/v1/auth/users", objectMapper.writeValueAsString(registrationRequest));
     }
 
     @Then("status is returned as {int}\\(new)")

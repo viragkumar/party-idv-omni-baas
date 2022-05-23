@@ -21,7 +21,7 @@ public class HttpMethods {
                 .post(url);
     }
 
-    public Response get(String url, String request) {
+    public Response get(String url) {
         return given().spec(anonymousRequestSpecification)
                 .when()
                 .get(url);
